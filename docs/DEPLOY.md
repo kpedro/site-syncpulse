@@ -38,46 +38,60 @@ git push -u origin main
 
 ## 🔧 Passo 4: Configurar Domínio Customizado (syncpulse.com.br)
 
-### Opção A: GitHub Pages
+**⚠️ IMPORTANTE:** O domínio está gerenciado na Hostinger. Configure os DNS no painel da Hostinger.
+
+### Opção A: GitHub Pages + Hostinger
 
 1. No GitHub, vá em **Settings** > **Pages**
 2. Em **Custom domain**, digite: `syncpulse.com.br`
 3. Clique em **Save**
+4. O GitHub criará automaticamente um arquivo `CNAME` no repositório
 
-3. Configure os registros DNS no seu provedor de domínio:
+5. **Configure DNS na Hostinger:**
+   - Acesse o painel da Hostinger: [hpanel.hostinger.com](https://hpanel.hostinger.com)
+   - Vá em **Domínios** > **Gerenciar** > **syncpulse.com.br**
+   - Clique em **DNS / Zone Editor** ou **Gerenciar DNS**
+   
+   **Adicione os seguintes registros:**
 
-**Registros DNS necessários:**
-```
-Tipo: A
-Nome: @
-Valor: 185.199.108.153
-TTL: 3600
+   **Registros A (para domínio principal):**
+   ```
+   Tipo: A
+   Nome: @
+   Valor: 185.199.108.153
+   TTL: 3600 (ou padrão)
+   
+   Tipo: A
+   Nome: @
+   Valor: 185.199.109.153
+   TTL: 3600
+   
+   Tipo: A
+   Nome: @
+   Valor: 185.199.110.153
+   TTL: 3600
+   
+   Tipo: A
+   Nome: @
+   Valor: 185.199.111.153
+   TTL: 3600
+   ```
 
-Tipo: A
-Nome: @
-Valor: 185.199.109.153
-TTL: 3600
+   **Registro CNAME (para www):**
+   ```
+   Tipo: CNAME
+   Nome: www
+   Valor: SEU_USUARIO.github.io
+   TTL: 3600
+   ```
 
-Tipo: A
-Nome: @
-Valor: 185.199.110.153
-TTL: 3600
+6. **Remova registros conflitantes:**
+   - Remova qualquer registro A ou CNAME antigo que aponte para outros IPs
+   - Mantenha apenas os registros do GitHub Pages listados acima
 
-Tipo: A
-Nome: @
-Valor: 185.199.111.153
-TTL: 3600
+7. Aguarde a propagação DNS (pode levar de 1 a 24 horas)
 
-Tipo: CNAME
-Nome: www
-Valor: SEU_USUARIO.github.io
-TTL: 3600
-```
-
-4. Aguarde a propagação DNS (pode levar até 24 horas)
-5. O GitHub criará automaticamente um arquivo `CNAME` no repositório
-
-### Opção B: Netlify (Recomendado para mais controle)
+### Opção B: Netlify (Recomendado para mais controle) + Hostinger
 
 1. Acesse [Netlify.com](https://netlify.com) e faça login com GitHub
 2. Clique em **"Add new site"** > **"Import an existing project"**
@@ -88,9 +102,14 @@ TTL: 3600
 5. Clique em **"Deploy site"**
 6. Após deploy, vá em **Site settings** > **Domain management**
 7. Clique em **"Add custom domain"** e digite `syncpulse.com.br`
-8. Configure os registros DNS conforme instruções do Netlify
+8. **Configure DNS na Hostinger:**
+   - Acesse [hpanel.hostinger.com](https://hpanel.hostinger.com)
+   - Vá em **Domínios** > **Gerenciar** > **syncpulse.com.br** > **DNS / Zone Editor**
+   - O Netlify mostrará os registros DNS necessários
+   - Adicione os registros conforme mostrado no painel do Netlify
+   - Geralmente será um registro A ou CNAME apontando para o Netlify
 
-### Opção C: Vercel
+### Opção C: Vercel + Hostinger
 
 1. Acesse [Vercel.com](https://vercel.com) e faça login com GitHub
 2. Clique em **"Add New Project"**
@@ -100,7 +119,13 @@ TTL: 3600
    - **Root Directory:** `./`
 5. Clique em **"Deploy"**
 6. Após deploy, vá em **Settings** > **Domains**
-7. Adicione `syncpulse.com.br` e configure DNS conforme instruções
+7. Adicione `syncpulse.com.br`
+8. **Configure DNS na Hostinger:**
+   - Acesse [hpanel.hostinger.com](https://hpanel.hostinger.com)
+   - Vá em **Domínios** > **Gerenciar** > **syncpulse.com.br** > **DNS / Zone Editor**
+   - O Vercel mostrará os registros DNS necessários
+   - Adicione os registros conforme mostrado no painel do Vercel
+   - Geralmente será um registro A ou CNAME apontando para o Vercel
 
 ## ✅ Verificação
 
@@ -140,9 +165,15 @@ O site será atualizado automaticamente em alguns minutos.
 ## 🆘 Troubleshooting
 
 **Problema:** Domínio não está funcionando
-- Verifique se os registros DNS estão corretos
+- Verifique se os registros DNS estão corretos no painel da Hostinger
 - Aguarde até 24 horas para propagação completa
 - Use ferramentas como [whatsmydns.net](https://www.whatsmydns.net) para verificar
+- Verifique se não há registros DNS conflitantes na Hostinger
+
+**Problema:** Não consigo acessar o painel DNS da Hostinger
+- Acesse: [hpanel.hostinger.com](https://hpanel.hostinger.com)
+- Faça login com suas credenciais da Hostinger
+- Navegue: **Domínios** > **Gerenciar** > **syncpulse.com.br** > **DNS / Zone Editor**
 
 **Problema:** Site não atualiza após push
 - Limpe o cache do navegador (Ctrl+Shift+R)
@@ -151,6 +182,12 @@ O site será atualizado automaticamente em alguns minutos.
 
 **Problema:** HTTPS não funciona
 - Aguarde alguns minutos após configurar o domínio
-- Verifique se o domínio está apontando corretamente
+- Verifique se o domínio está apontando corretamente na Hostinger
 - Alguns serviços podem levar até 24h para emitir certificado SSL
+- Certifique-se de que os registros DNS estão corretos
+
+**Problema:** Erro ao adicionar registros na Hostinger
+- Certifique-se de estar na seção correta: **DNS / Zone Editor**
+- Remova registros antigos que possam estar conflitando
+- Use TTL padrão (geralmente 3600) se não tiver certeza
 
