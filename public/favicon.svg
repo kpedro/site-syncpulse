@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e3a8a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Fundo circular -->
+  <circle cx="50" cy="50" r="48" fill="url(#grad)"/>
+  
+  <!-- Símbolo de pulso/sincronização -->
+  <path d="M 30 50 L 40 40 L 40 45 L 50 45 L 50 55 L 40 55 L 40 60 Z" fill="white" opacity="0.9"/>
+  <path d="M 70 50 L 60 40 L 60 45 L 50 45 L 50 55 L 60 55 L 60 60 Z" fill="white" opacity="0.9"/>
+  
+  <!-- Linha central conectando -->
+  <line x1="45" y1="50" x2="55" y2="50" stroke="white" stroke-width="3" stroke-linecap="round" opacity="0.9"/>
+</svg>
+
