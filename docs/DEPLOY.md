@@ -38,6 +38,10 @@ git push -u origin main
 
 ## 🔧 Passo 4: Configurar Domínio Customizado (syncpulse.com.br)
 
+**⚠️ ATENÇÃO CRÍTICA:** 
+- Se você usa o domínio syncpulse.com.br para uma VPS (n8n ou outros serviços), **NÃO mexa nos registros A existentes** sem ler primeiro o guia `docs/DNS_VPS_SEGURO.md`
+- Recomendamos usar `www.syncpulse.com.br` para o site e manter `syncpulse.com.br` para a VPS
+
 **⚠️ IMPORTANTE:** O domínio está gerenciado na Hostinger. Configure os DNS no painel da Hostinger.
 
 ### Opção A: GitHub Pages + Hostinger
