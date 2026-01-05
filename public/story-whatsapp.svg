@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080">
+  <defs>
+    <linearGradient id="storyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e3a8a;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#1e40af;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2563eb;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Fundo com gradiente -->
+  <rect width="1080" height="1080" fill="url(#storyGrad)"/>
+  
+  <!-- Padrão decorativo de fundo -->
+  <circle cx="200" cy="200" r="150" fill="white" opacity="0.05"/>
+  <circle cx="880" cy="880" r="180" fill="white" opacity="0.05"/>
+  <circle cx="540" cy="300" r="120" fill="white" opacity="0.03"/>
+  <circle cx="200" cy="880" r="100" fill="white" opacity="0.04"/>
+  <circle cx="880" cy="200" r="130" fill="white" opacity="0.04"/>
+  
+  <!-- Logo/Ícone central grande -->
+  <g transform="translate(540, 380)" filter="url(#glow)">
+    <circle cx="0" cy="0" r="100" fill="white" opacity="0.2"/>
+    <circle cx="0" cy="0" r="70" fill="white" opacity="0.3"/>
+    
+    <!-- Símbolo de pulso/sincronização -->
+    <g transform="translate(-60, 0)">
+      <path d="M -40 0 L -25 -18 L -25 -9 L -10 -9 L -10 9 L -25 9 L -25 18 Z" fill="white" opacity="0.95"/>
+    </g>
+    <g transform="translate(60, 0)">
+      <path d="M 40 0 L 25 -18 L 25 -9 L 10 -9 L 10 9 L 25 9 L 25 18 Z" fill="white" opacity="0.95"/>
+    </g>
+    <line x1="-35" y1="0" x2="35" y2="0" stroke="white" stroke-width="8" stroke-linecap="round" opacity="0.95"/>
+  </g>
+  
+  <!-- Título principal -->
+  <text x="540" y="580" font-family="Arial, sans-serif" font-size="92" font-weight="bold" fill="white" text-anchor="middle" filter="url(#glow)">
+    SyncPulse
+  </text>
+  
+  <!-- Subtítulo -->
+  <text x="540" y="660" font-family="Arial, sans-serif" font-size="42" fill="white" opacity="0.95" text-anchor="middle" font-weight="600">
+    Apps Inteligentes com IA
+  </text>
+  
+  <!-- Descrição dos apps -->
+  <text x="540" y="730" font-family="Arial, sans-serif" font-size="32" fill="white" opacity="0.9" text-anchor="middle">
+    PedagoFlow • Mente em Construção
+  </text>
+  <text x="540" y="780" font-family="Arial, sans-serif" font-size="32" fill="white" opacity="0.9" text-anchor="middle">
+    AstroFlux
+  </text>
+  
+  <!-- Badge IA -->
+  <rect x="340" y="840" width="400" height="70" rx="35" fill="white" opacity="0.25"/>
+  <text x="540" y="885" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="white" text-anchor="middle">
+    🤖 Powered by Artificial Intelligence
+  </text>
+  
+  <!-- Call to Action -->
+  <rect x="240" y="950" width="600" height="80" rx="40" fill="#25d366" opacity="0.95"/>
+  <text x="540" y="1005" font-family="Arial, sans-serif" font-size="36" font-weight="bold" fill="white" text-anchor="middle">
+    ACESSE AGORA →
+  </text>
+  
+  <!-- Domínio no rodapé -->
+  <text x="540" y="1060" font-family="Arial, sans-serif" font-size="24" fill="white" opacity="0.7" text-anchor="middle">
+    www.syncpulse.com.br
+  </text>
+</svg>
+
