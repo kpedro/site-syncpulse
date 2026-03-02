@@ -1,0 +1,12 @@
+{
+  "name": "site-syncpulse",
+  "version": "1.0.0",
+  "description": "Site institucional SyncPulse",
+  "scripts": {
+    "dev": "npx serve -l 5175",
+    "generate-og-png": "node scripts/generate-og-png.js"
+  },
+  "devDependencies": {
+    "sharp": "^0.33.2"
+  }
+}
