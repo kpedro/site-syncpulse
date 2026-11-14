@@ -1,0 +1,50 @@
+/* SyncPulse Links — estilos do cartão (compartilhado com a prévia do admin) */
+.spl-page {
+  --spl-bg: #0b1b46; --spl-bg-2: #1e3a8a; --spl-fg: #ffffff;
+  min-height: 100%;
+  background: linear-gradient(180deg, var(--spl-bg) 0%, var(--spl-bg-2) 100%);
+  color: var(--spl-fg);
+  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  padding: 40px 20px 28px;
+  box-sizing: border-box;
+}
+.spl-page *, .spl-page *::before, .spl-page *::after { box-sizing: border-box; }
+.spl-inner { width: 100%; max-width: 560px; margin: 0 auto; }
+.spl-header { text-align: center; margin-bottom: 28px; }
+.spl-avatar {
+  width: 112px; height: 112px; margin: 0 auto 16px; border-radius: 50%; overflow: hidden;
+  border: 3px solid rgba(255, 255, 255, 0.85); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  background: rgba(255, 255, 255, 0.12);
+}
+.spl-avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.spl-avatar-initials {
+  display: flex; align-items: center; justify-content: center;
+  font-size: 40px; font-weight: 800; letter-spacing: 0.02em;
+  background: linear-gradient(135deg, #3b82f6, #1e3a8a); color: #fff;
+}
+.spl-name { margin: 0 0 8px; font-size: 1.6rem; font-weight: 800; letter-spacing: -0.02em; line-height: 1.2; color: inherit; }
+.spl-bio { font-size: 1rem; line-height: 1.45; opacity: 0.92; }
+.spl-bio p { margin: 0 0 2px; }
+.spl-handle { margin: 10px 0 0; font-weight: 700; font-size: 0.98rem; opacity: 0.95; }
+.spl-section { margin: 0 0 26px; }
+.spl-section-title {
+  margin: 0 0 12px; text-align: center; font-size: 0.82rem; font-weight: 800;
+  letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.85; color: inherit;
+}
+.spl-buttons { display: flex; flex-direction: column; gap: 12px; }
+.spl-btn {
+  display: flex; align-items: center; justify-content: center; text-align: center;
+  min-height: 56px; padding: 14px 20px; border-radius: 999px;
+  font-weight: 700; font-size: 1rem; line-height: 1.3; text-decoration: none;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+  word-break: break-word;
+}
+.spl-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(0, 0, 0, 0.24); filter: brightness(1.04); }
+.spl-btn:active { transform: translateY(0); }
+.spl-btn:focus-visible { outline: 3px solid #93c5fd; outline-offset: 3px; }
+.spl-empty { text-align: center; opacity: 0.7; font-size: 0.9rem; margin: 0; }
+.spl-footer { text-align: center; margin-top: 36px; font-size: 0.85rem; opacity: 0.75; }
+.spl-footer a { color: inherit; font-weight: 700; text-decoration: none; letter-spacing: 0.02em; }
+.spl-footer a:hover { text-decoration: underline; }
+@media (prefers-reduced-motion: reduce) { .spl-btn { transition: none; } .spl-btn:hover { transform: none; } }
