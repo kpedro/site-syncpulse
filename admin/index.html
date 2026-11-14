@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta name="theme-color" content="#0b1b46" />
+  <title>Admin de links | SyncPulse</title>
+  <link rel="icon" type="image/svg+xml" href="../public/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../public/favicon-32.png" />
+  <link rel="shortcut icon" href="../favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../public/apple-touch-icon.png" />
+  <link rel="stylesheet" href="links-render.css" />
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+  <header class="adm-topbar">
+    <a class="adm-brand" href="../index.html">
+      <img src="../public/favicon.svg" alt="" width="28" height="28" />
+      <span>SyncPulse <small>Admin de links</small></span>
+    </a>
+    <div class="adm-topbar-actions" id="topbar-actions" hidden>
+      <a class="adm-btn adm-btn-ghost" id="public-link" href="https://links.syncpulse.com.br/" target="_blank" rel="noopener">Ver página pública ↗</a>
+      <span class="adm-user" id="user-email"></span>
+      <button class="adm-btn adm-btn-ghost" id="btn-logout" type="button">Sair</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="adm-view" id="view-loading">
+      <div class="adm-card adm-center"><div class="adm-spinner" aria-hidden="true"></div><p>Carregando…</p></div>
+    </section>
+
+    <section class="adm-view" id="view-login" hidden>
+      <div class="adm-card adm-login">
+        <img src="../public/favicon.svg" alt="" width="56" height="56" class="adm-login-logo" />
+        <h1>Admin de links</h1>
+        <p class="adm-muted">Entre para editar a página <strong>links.syncpulse.com.br</strong>: perfil, seções e botões.</p>
+        <button class="adm-btn adm-btn-google" id="btn-google" type="button">
+          <svg viewBox="0 0 48 48" width="20" height="20" aria-hidden="true"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.4-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-7.9l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.4-.4-3.5z"/></svg>
+          Entrar com Google
+        </button>
+        <div class="adm-divider"><span>ou receba um link por e-mail</span></div>
+        <form id="form-magic" class="adm-form-inline" novalidate>
+          <label class="adm-sr" for="magic-email">E-mail</label>
+          <input id="magic-email" type="email" autocomplete="email" placeholder="seu@email.com" required />
+          <button class="adm-btn adm-btn-primary" type="submit">Enviar link</button>
+        </form>
+        <p class="adm-msg" id="login-msg" role="status"></p>
+      </div>
+    </section>
+
+    <section class="adm-view" id="view-denied" hidden>
+      <div class="adm-card adm-login">
+        <h1>Acesso negado</h1>
+        <p class="adm-muted">A conta <strong id="denied-email"></strong> não tem permissão para editar esta página.</p>
+        <button class="adm-btn adm-btn-primary" id="btn-logout-denied" type="button">Entrar com outra conta</button>
+      </div>
+    </section>
+
+    <section class="adm-view" id="view-app" hidden>
+      <div class="adm-tabs" role="tablist">
+        <button type="button" class="adm-tab is-active" data-tab="editor" role="tab" aria-selected="true">Editar</button>
+        <button type="button" class="adm-tab" data-tab="preview" role="tab" aria-selected="false">Prévia</button>
+      </div>
+      <div class="adm-layout" id="layout" data-tab="editor">
+        <div class="adm-editor">
+          <div class="adm-card">
+            <div class="adm-card-head"><h2>Perfil</h2><span class="adm-status" id="status-profile"></span></div>
+            <div class="adm-photo-row">
+              <div class="adm-photo" id="photo-preview"></div>
+              <div class="adm-photo-actions">
+                <label class="adm-btn adm-btn-secondary" for="photo-input">Enviar foto</label>
+                <input id="photo-input" type="file" accept="image/png,image/jpeg,image/webp,image/gif" hidden />
+                <button class="adm-btn adm-btn-ghost" id="btn-photo-remove" type="button">Remover foto</button>
+                <small class="adm-muted">PNG, JPG, WEBP ou GIF até 5 MB. Ideal: quadrada.</small>
+              </div>
+            </div>
+            <div class="adm-grid">
+              <label>Nome<input data-profile="name" maxlength="80" /></label>
+              <label>@ (usuário)<input data-profile="handle" maxlength="60" placeholder="@seuusuario" /></label>
+              <label class="adm-span2">Bio <small class="adm-muted">(uma frase por linha)</small><textarea data-profile="bio" rows="3" maxlength="400"></textarea></label>
+              <label class="adm-span2">Título da aba / compartilhamento<input data-profile="page_title" maxlength="90" placeholder="Kadson Pedro | SyncPulse" /></label>
+            </div>
+            <h3 class="adm-subtitle">Cores</h3>
+            <div class="adm-colors">
+              <label><input type="color" data-profile="bg_color" />Fundo (topo)</label>
+              <label><input type="color" data-profile="bg_color_2" />Fundo (base)</label>
+              <label><input type="color" data-profile="text_color" />Texto</label>
+              <label><input type="color" data-profile="button_bg_color" />Botão padrão</label>
+              <label><input type="color" data-profile="button_text_color" />Texto do botão</label>
+            </div>
+          </div>
+
+          <div class="adm-card-head adm-sections-head">
+            <h2>Seções e links</h2>
+            <button class="adm-btn adm-btn-primary" id="btn-add-section" type="button">+ Nova seção</button>
+          </div>
+          <div id="sections"></div>
+        </div>
+
+        <aside class="adm-preview-col">
+          <div class="adm-preview-head">
+            <span>Prévia ao vivo</span>
+            <a id="public-link-2" href="https://links.syncpulse.com.br/" target="_blank" rel="noopener">Abrir página ↗</a>
+          </div>
+          <div class="adm-phone"><div class="adm-phone-screen" id="preview"></div></div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <div class="adm-toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.119.0/dist/umd/supabase.min.js" integrity="sha384-gnyZit14c5lnGcarmA166QQjjJXpucw25ogZXuwH3HxxY904zHkBqmxVpelsPorb" crossorigin="anonymous"></script>
+  <script src="config.js"></script>
+  <script src="links-render.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>
